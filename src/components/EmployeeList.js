@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import React, {Component} from 'react';
-import {Text, View, ListView} from 'react-native';
+import {Text, View, ListView, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 import {employeesFetch} from '../actions';
 import ListItem from './ListItem';
+import {Header} from './common';
+import {Actions} from 'react-native-router-flux';
+
 
 class EmployeeList extends Component{
 
@@ -14,7 +17,7 @@ class EmployeeList extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('list component receive props !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+
         this.createDataSource(nextProps);
     }
 
@@ -33,18 +36,54 @@ class EmployeeList extends Component{
         console.log(this.props.employees);
 
         return(
+           <View style={styles.full}>
+           <Header headerText="Employees"  />
+
            <ListView
                enableEmptySections
                dataSource={this.dataSource}
                renderRow={this.renderRow}
            />
+               <View>
+                   <TouchableHighlight style={styles.addButton}
+                                       underlayColor='#ff7043' onPress={() => {Actions.employeeCreate()}}>
+                       <Text style={{fontSize: 50, color: 'white'}}>+</Text>
+                   </TouchableHighlight>
+               </View>
+           </View>
+
         )
     }
 
 }
 
+const styles = {
+    addButton: {
+        backgroundColor: '#ff5722',
+        borderColor: '#ff5722',
+        borderWidth: 1,
+        height: 60,
+        width: 60,
+        borderRadius: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        shadowColor: "#000000",
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 1,
+            width: 0
+        },
+        bottom: 20,
+        right: 20
+    },
+    full: {
+        flex: 1
+    }
+}
+
 const mapStateToProps = state => {
-    console.log('~~~~~~~~~~~~~~~~~');
     console.log(state.employees);
     const employees = _.map(state.employees, (val, uid) => {
         return {...val, uid};
