@@ -10,7 +10,7 @@ Documentation can be found on the [React-native website](https://facebook.github
 * `cd manager` 
 * `npm install`
 
-![Login page](/screenshots/1.png?raw=true "Login page")
-![Employee list](/screenshots/2.png?raw=true "Employee list")
-![Create Employee](/screenshots/3.png?raw=true "Create employee")
-![Edit employee](/screenshots/4.png?raw=true "Edit Employee")
+![Login page](/screenshots/1.png =240x320?raw=true "Login page")
+![Employee list](/screenshots/2.png =240x320?raw=true "Employee list")
+![Create Employee](/screenshots/3.png =240x320?raw=true "Create employee")
+![Edit employee](/screenshots/4.png =240x320?raw=true "Edit Employee")
