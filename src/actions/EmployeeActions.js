@@ -1,4 +1,4 @@
-import {EMPLOYEE_UPDATE, EMPLOYEE_CREATE, EMPLOYEES_FETCH_SUCCESS, EMPLOYEE_SAVE_SUCCESS} from './types'
+import {EMPLOYEE_UPDATE, EMPLOYEE_CREATE, EMPLOYEES_FETCH_SUCCESS, EMPLOYEE_SAVE_SUCCESS, EMPLOYEE_REFRESH} from './types'
 import firebase from 'firebase';
 import {Actions} from 'react-native-router-flux'
 
@@ -58,3 +58,9 @@ export const employeeDelete = ({uid}) => {
             });
     };
 };
+
+export const employeeRefresh = () => {
+    return(dispatch) => {
+        dispatch({type: EMPLOYEE_REFRESH});
+    }
+}

@@ -43,10 +43,11 @@ class EmployeeList extends Component{
                enableEmptySections
                dataSource={this.dataSource}
                renderRow={this.renderRow}
+
            />
                <View>
                    <TouchableHighlight style={styles.addButton}
-                                       underlayColor='#ff7043' onPress={() => {Actions.employeeCreate()}}>
+                                       underlayColor='#1e3647' onPress={() => {Actions.employeeCreate()}}>
                        <Text style={{fontSize: 50, color: 'white'}}>+</Text>
                    </TouchableHighlight>
                </View>
@@ -59,8 +60,8 @@ class EmployeeList extends Component{
 
 const styles = {
     addButton: {
-        backgroundColor: '#ff5722',
-        borderColor: '#ff5722',
+        backgroundColor: '#2e6082',
+        borderColor: '#2b5470',
         borderWidth: 1,
         height: 60,
         width: 60,
@@ -79,7 +80,8 @@ const styles = {
         right: 20
     },
     full: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#3498db'
     }
 }
 

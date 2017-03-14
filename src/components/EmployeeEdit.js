@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import {Card, CardSection, Button, Confirm, Header} from './common';
 import EmployeeForm from './EmployeeForm'
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import {employeeUpdate, employeeSave, employeeDelete} from '../actions';
+import {employeeUpdate, employeeSave, employeeDelete, employeeRefresh} from '../actions';
 import Communications from 'react-native-communications';
 
 
@@ -18,6 +18,10 @@ class EmployeeEdit extends Component{
             this.props.employeeUpdate({prop, value});
         })
 
+    }
+
+    componentWillUnmount(){
+        this.props.employeeRefresh();
     }
 
     buttonPress(){
@@ -43,33 +47,40 @@ class EmployeeEdit extends Component{
 
     render(){
         return(
-         <View>
+         <View style={styles.container}>
              <Header headerText="Employee Edit" back={true} />
+         <View style={styles.card}>
 
-            <Card>
+            <Card style={styles.card}>
                 <EmployeeForm/>
-                <CardSection>
-                    <Button
-                      onPress={this.buttonPress.bind(this)}
-                    >
-                        Save Changes
-                    </Button>
-                </CardSection>
 
-                <CardSection>
-                    <Button
-                        onPress={this.onText.bind(this)}
-                    >
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={this.buttonPress.bind(this)}
+                >
+                    <Text style={styles.buttonText}>
+                        Save Changes
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={this.onText.bind(this)}
+                >
+                    <Text style={styles.buttonText}>
                         Text Schedule
-                    </Button>
-                </CardSection>
-                <CardSection>
-                    <Button
-                        onPress={()=>this.setState({showModal: !this.state.showModal})}
-                    >
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={[styles.buttonContainer,{ marginBottom: 10}]}
+                    onPress={()=>this.setState({showModal: !this.state.showModal})}
+                >
+                    <Text style={styles.buttonText}>
                         Fire
-                    </Button>
-                </CardSection>
+                    </Text>
+                </TouchableOpacity>
+
                 <Confirm
                     visible={this.state.showModal}
                     onAccept={this.onAccept.bind(this)}
@@ -79,7 +90,30 @@ class EmployeeEdit extends Component{
                 </Confirm>
             </Card>
          </View>
+         </View>
         );
+    }
+}
+
+const styles = {
+  container: {
+      backgroundColor: '#42b3ff',
+      flex: 1
+  },
+  card: {
+      backgroundColor: '#42b3ff',
+  },
+    buttonContainer: {
+        backgroundColor: '#2980b9',
+        paddingVertical: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: 10
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: '#FFFFFF',
+        fontWeight: '700'
     }
 }
 
@@ -88,4 +122,4 @@ const mapStateToProps = (state) => {
     return {name, phone, shift};
 }
 
-export default connect(mapStateToProps, {employeeUpdate, employeeSave, employeeDelete})(EmployeeEdit);
+export default connect(mapStateToProps, {employeeUpdate, employeeSave, employeeDelete, employeeRefresh})(EmployeeEdit);

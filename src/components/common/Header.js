@@ -40,7 +40,7 @@ const Header = (props) => {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#42b3ff',
     height: 60,
     paddingTop: 15,
     shadowColor: '#000',
@@ -51,11 +51,13 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     flex:0,
-    justifyContent: 'center'
+    justifyContent: 'center',
+
   },
   textStyle: {
     fontSize: 20,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    color: '#ffffff'
   },
   back: {
     width: 20,

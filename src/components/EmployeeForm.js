@@ -7,16 +7,17 @@ import {employeeUpdate} from '../actions';
 class EmployeeForm extends Component{
     render(){
         return(
-              <View>
-                <CardSection>
+              <View style={styles.formContainer}>
+                <CardSection style={styles.section}>
                     <Input
+                        style={styles.login}
                         label="Name"
                         placeholder="Jay Prakash"
                         value={this.props.name}
                         onChangeText = {text => this.props.employeeUpdate({prop: 'name', value: text})}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.section}>
                     <Input
                         label="Phone No."
                         placeholder="-987-456-123"
@@ -24,10 +25,10 @@ class EmployeeForm extends Component{
                         onChangeText = {text => this.props.employeeUpdate({prop: 'phone', value: text})}
                     />
                 </CardSection>
-                <CardSection>
+                <CardSection style={styles.section}>
                     <Text style={styles.pickerTextStyle}>Shift</Text>
                     <Picker
-                        style={{flex:1}}
+                        style={{flex:1,color: 'white'}}
                         selectedValue={this.props.shift}
                         onValueChange={(day) => {this.props.employeeUpdate({prop: 'shift', value: day}); console.log(this.props.shift);}}
                     >
@@ -48,7 +49,23 @@ class EmployeeForm extends Component{
 const styles = {
     pickerTextStyle:{
         fontSize: 18,
-        paddingLeft: 20
+        paddingLeft: 20,
+        color: '#fff'
+    },
+    formContainer: {
+        backgroundColor: '#42b3ff'
+    },
+    section: {
+        backgroundColor: 'rgba(255, 255, 255, 0.2)'
+    },
+    input: {
+        height: 40,
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        marginBottom: 10,
+        color: '#fff',
+        paddingHorizontal: 10,
+        opacity: 1
+
     }
 }
 
