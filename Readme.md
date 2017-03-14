@@ -10,9 +10,9 @@ Documentation can be found on the [React-native website](https://facebook.github
 * `cd manager` 
 * `npm install`
 
-<img src="/screenshots/1.png" width="480" height="640" />
-<img src="/screenshots/2.png" width="480" height="640" />
-<img src="/screenshots/3.png" width="480" height="640" />
-<img src="/screenshots/4.png" width="480" height="640" />
+<img src="/screenshots/1.png" width="270" height="480" />
+<img src="/screenshots/2.png" width="270" height="480" />
+<img src="/screenshots/3.png" width="270" height="480" />
+<img src="/screenshots/4.png" width="270" height="480" />
 
 
