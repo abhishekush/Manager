@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardSection, Input, Button, Spinner} from './common';
 import {connect} from 'react-redux';
 import {emailChanged, passwordChanged, loginUser} from '../actions';
-import {View,Image,Text, TextInput} from 'react-native';
+import {View,Image,Text, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 
 class LoginForm extends Component{
 
@@ -28,15 +28,21 @@ class LoginForm extends Component{
            return <Spinner size="large" />
         }
         return(
-            <Button onPress={this.onLogin.bind(this)}>
+            <TouchableOpacity
+                style={styles.buttonContainer}
+                onPress={this.onLogin.bind(this)}
+            >
+            <Text style={styles.buttonText}>
                 Login
-            </Button>
+            </Text>
+            </TouchableOpacity>
+
         )
     }
 
     render(){
         return(
-            <View style={styles.container}>
+            <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
                 <View style={styles.logoContainer}>
                   <Image
                       source={require('../../assets/start-logo.png')}
@@ -52,10 +58,13 @@ class LoginForm extends Component{
                     onChangeText = {this.onEmailChange.bind(this)}
                     value = {this.props.email}
                     underlineColorAndroid={'transparent'}
+                    keyboardType={'email-address'}
+                    autoCapitalize={'none'}
+                    autoCorrect={false}
                 />
                     <TextInput
                         secureTextEntry
-                        placeholder={'password'}
+                        placeholder={'Password'}
                         style={styles.input}
                         onChangeText = {this.onPasswordChange.bind(this)}
                         value = {this.props.password}
@@ -65,12 +74,12 @@ class LoginForm extends Component{
                 <Text
                  style={styles.errorText}
                 >{this.props.error}</Text>
-                <CardSection>
+
                     {this.renderButton()}
-                </CardSection>
+
 
                 </View>
-            </View>
+            </KeyboardAvoidingView>
         )
     }
 }
@@ -107,10 +116,19 @@ const styles = {
     input: {
         height: 40,
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
-        marginBottom: 20,
+        marginBottom: 10,
         color: '#fff',
         paddingHorizontal: 10,
 
+    },
+    buttonContainer: {
+        backgroundColor: '#2980b9',
+        paddingVertical: 10
+    },
+    buttonText: {
+        textAlign: 'center',
+        color: '#FFFFFF',
+        fontWeight: '700'
     }
 }
 
